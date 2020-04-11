@@ -1,5 +1,10 @@
 import java.util.ArrayList;
 
+/**
+ * this class implements the Pizza object
+ * @FaresElkhouli
+ * @ZhiyuFeng
+ */
 public abstract class Pizza {
     protected String style;
     protected String size;
