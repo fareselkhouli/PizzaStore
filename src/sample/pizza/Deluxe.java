@@ -1,3 +1,4 @@
+package sample.pizza;
 /**
  * This class implements the Deluxe pizza type and extends the abstract class Pizza
  * @FaresElkhouli

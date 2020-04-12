@@ -1,3 +1,5 @@
+package sample.pizza;
+
 /**
  * This class implements the Hawaiian pizza type and extends the abstract class Pizza
  * @FaresElkhouli
