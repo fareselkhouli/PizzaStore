@@ -84,19 +84,42 @@ public class pizzaController implements Initializable{
         String selected = (String) pizzaComboBox.getSelectionModel().getSelectedItem();
         if(selected.equals("Deluxe") ){
             toppingsList.setDisable(true);
+            addToppingButton.setDisable(true);
+            removeToppingButton.setDisable(true);
+            clearSelectButton.setDisable(true);
             imageBox.setImage(deluxeImage);
             return;
         }
         if(selected.equals("Hawaiian")){
             toppingsList.setDisable(true);
+            addToppingButton.setDisable(true);
+            removeToppingButton.setDisable(true);
+            clearSelectButton.setDisable(true);
             imageBox.setImage(hawaiianImage);
             return;
         }
         imageBox.setImage(byoImage);
         toppingsList.setDisable(false);
+        addToppingButton.setDisable(false);
+        removeToppingButton.setDisable(false);
+        clearSelectButton.setDisable(false);
     }
 
-    public void addButtonClicked() throws IllegalArgumentException{
+    public void addToppingButtonClicked() throws IllegalArgumentException{
+
+        ObservableList<String> selectedToppings;
+        selectedToppings = toppingsList.getSelectionModel().getSelectedItems();
+        if(selectedToppings.isEmpty()){
+            outputArea.appendText("\nMust select at least one topping");
+            return;
+        }
+
+        selectedToppingBox.getItems().addAll(selectedToppings);
+
+        if(selectedToppingBox.getItems().size() > 6){
+            selectedToppingBox.getItems().clear();
+            outputArea.appendText("Can not select more than six toppings");
+        }
 
     }
 
@@ -112,6 +135,5 @@ public class pizzaController implements Initializable{
         Stage window = (Stage) showOrderButton.getScene().getWindow();
         window.setScene(new Scene(root));
         window.show();
-
     }
 }
