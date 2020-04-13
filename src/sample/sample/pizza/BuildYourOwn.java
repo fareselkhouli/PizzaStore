@@ -14,10 +14,13 @@ public class BuildYourOwn extends Pizza {
 
     /**
      * calculates the price of the pizza
-     * @return int price of pizza
+     * @return int price of pizza. returns -1 on error case
      */
     public int pizzaPrice(){
         int numberToppings = toppings.size();
+        if (numberToppings < 1) {
+            return -1;
+        }
         int smallCost = 5 + 2*numberToppings;
         int mediumCost = smallCost + 2 + 2*numberToppings;
         int largeCost = smallCost + 4 + 2*numberToppings;
