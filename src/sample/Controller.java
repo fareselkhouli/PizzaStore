@@ -8,6 +8,8 @@ import javafx.scene.control.TextArea;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.ListView;
 import javafx.scene.control.Button;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import sample.pizza.*;
 
 import java.net.URL;
@@ -28,6 +30,8 @@ public class Controller implements Initializable{
     //inject FXML objects
     @FXML
     private ComboBox pizzaComboBox;
+    @FXML
+    private ImageView imageBox;
     @FXML
     private ComboBox sizeComboBox;
     @FXML
@@ -66,12 +70,24 @@ public class Controller implements Initializable{
      * disables boxes
      */
     public void pizzaComBoxselect(){
+        Image byoImage = new Image("file:buildyourown.jpg");
+        Image hawaiianImage = new Image("file:hawaiian.jpg");
+        Image deluxeImage = new Image("file:deluxe.jpg");
+
         String selected = (String) pizzaComboBox.getSelectionModel().getSelectedItem();
-        if(selected.equals("Deluxe") || selected.equals("Hawaiian")){
+        if(selected.equals("Deluxe") ){
             toppingsList.setDisable(true);
+            imageBox.setImage(deluxeImage);
+            return;
         }
+        if(selected.equals("Hawaiian")){
+            toppingsList.setDisable(true);
+            imageBox.setImage(hawaiianImage);
+            return;
+        }
+        imageBox.setImage(byoImage);
     }
-    
+
     public void addButtonClicked() throws IllegalArgumentException{
         if()
     }
