@@ -51,6 +51,6 @@ public abstract class Pizza {
             }
             return message;
         }
-        return "This is a " + size + style + "pizza.";
+        return "This is a " + size + " " + style + " pizza.";
     }
 }

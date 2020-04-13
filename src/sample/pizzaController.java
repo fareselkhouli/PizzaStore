@@ -17,7 +17,9 @@ import javafx.stage.Stage;
 import sample.pizza.*;
 import sample.scene2.*;
 import java.io.IOException;
+import java.lang.reflect.Array;
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 
@@ -29,12 +31,14 @@ public class pizzaController implements Initializable{
     ObservableList<String> types = FXCollections.observableArrayList("Build your own",
             "Deluxe",
             "Hawaiian");
-    ObservableList<String> sizes = FXCollections.observableArrayList("Medium",
-            "Small",
-            "Large");
+    ObservableList<String> sizes = FXCollections.observableArrayList("medium",
+            "small",
+            "large");
     Image byoImage = new Image("file:buildyourown.jpg");
     Image hawaiianImage = new Image("file:hawaiian.jpg");
     Image deluxeImage = new Image("file:deluxe.jpg");
+
+    private ArrayList<Pizza> order = new ArrayList<>();
 
     //inject FXML objects
     @FXML
@@ -70,7 +74,7 @@ public class pizzaController implements Initializable{
         pizzaComboBox.setItems(types);
         sizeComboBox.setItems(sizes);
         pizzaComboBox.setValue("Build your own");
-        sizeComboBox.setValue("Medium");
+        sizeComboBox.setValue("medium");
         toppingsList.setItems(toppings);
         imageBox.setImage(byoImage);
     }
@@ -86,7 +90,6 @@ public class pizzaController implements Initializable{
             toppingsList.setDisable(true);
             addToppingButton.setDisable(true);
             removeToppingButton.setDisable(true);
-            clearSelectButton.setDisable(true);
             imageBox.setImage(deluxeImage);
             return;
         }
@@ -94,7 +97,6 @@ public class pizzaController implements Initializable{
             toppingsList.setDisable(true);
             addToppingButton.setDisable(true);
             removeToppingButton.setDisable(true);
-            clearSelectButton.setDisable(true);
             imageBox.setImage(hawaiianImage);
             return;
         }
@@ -102,9 +104,12 @@ public class pizzaController implements Initializable{
         toppingsList.setDisable(false);
         addToppingButton.setDisable(false);
         removeToppingButton.setDisable(false);
-        clearSelectButton.setDisable(false);
     }
 
+    /**
+     * Adds topping to selected toppings box
+     * @throws IllegalArgumentException
+     */
     public void addToppingButtonClicked() throws IllegalArgumentException{
 
         ObservableList<String> selectedToppings;
@@ -124,6 +129,27 @@ public class pizzaController implements Initializable{
     }
 
     /**
+     * removes selected topping
+     */
+    public void RemoveToppingButtonCilcked(){
+        if(selectedToppingBox.getSelectionModel().isEmpty()){
+            outputArea.appendText("\nPlease select an item to remove");
+            return;
+        }
+        selectedToppingBox.getSelectionModel().clearSelection();
+    }
+
+    /**
+     * clears user selection
+     */
+    public void ClearSelectedButtonCilcked(){
+        pizzaComboBox.setValue("Build your own");
+        sizeComboBox.setValue("medium");
+        imageBox.setImage(byoImage);
+        selectedToppingBox.getItems().clear();
+    }
+
+    /**
      * starts the show order screen
      * @throws IOException
      */
@@ -136,4 +162,39 @@ public class pizzaController implements Initializable{
         window.setScene(new Scene(root));
         window.show();
     }
+
+    /**
+     * adds pizza to order
+     */
+    public void addToOrderButtonPressed(){
+        String pType = (String) pizzaComboBox.getValue();
+        String pSize = (String) sizeComboBox.getValue();
+
+        if(pType.equals("Build your own")){
+            ArrayList<String> toppings= new ArrayList<String>();
+            ObservableList<String> selected = selectedToppingBox.getItems();
+            for (int i = 0; i<selected.size();++i){
+                toppings.add(selected.get(i));
+            }
+            BuildYourOwn curr = new BuildYourOwn(pType,pSize,toppings);
+            order.add(curr);
+            outputArea.appendText("\nPizza successfully added!" + curr.toString());
+            return;
+        }
+        if(pType.equals("Deluxe")){
+            Deluxe curr = new Deluxe(pType,pSize);
+            order.add(curr);
+            outputArea.appendText("\nPizza successfully added!" + curr.toString());
+            return;
+        }
+        if(pType.equals("Hawaiian")){
+            Hawaiian curr = new Hawaiian(pType,pSize);
+            order.add(curr);
+            outputArea.appendText("\nPizza successfully added!" + curr.toString());
+            return;
+        }
+
+        outputArea.appendText("\nInvalid input");
+    }
+
 }

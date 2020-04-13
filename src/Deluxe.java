@@ -43,6 +43,6 @@ public class Deluxe extends Pizza {
      */
     @Override
     public String toString(){
-        return "This is a" + size+ "deluxe pizza that costs" + pizzaPrice();
+        return " This is a " + size+ " deluxe pizza that costs " + pizzaPrice();
     }
 }
