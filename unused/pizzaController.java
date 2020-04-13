@@ -1,3 +1,7 @@
+/**
+ * @FaresElkhouli
+ * @ZhiyuFeng
+ */
 package sample;
 
 import javafx.collections.FXCollections;
@@ -125,7 +129,7 @@ public class pizzaController implements Initializable{
             outputArea.appendText("\nNo duplicate toppings allowed");
             return;
         }
-        
+
         selectedToppingBox.getItems().add(curr);
 
         if(selectedToppingBox.getItems().size() > 6){
@@ -143,7 +147,8 @@ public class pizzaController implements Initializable{
             outputArea.appendText("\nPlease select an item to remove");
             return;
         }
-        selectedToppingBox.getSelectionModel().clearSelection();
+        int index = selectedToppingBox.getSelectionModel().getSelectedIndex();
+        selectedToppingBox.getItems().remove(index);
     }
 
     /**
@@ -162,12 +167,16 @@ public class pizzaController implements Initializable{
      */
     public void showOrderButtonPressed(ActionEvent event) throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/sample/scene2/Scene2.fxml"));
-        Controller orderController = loader.getController();
         Parent root = loader.load();
+        Controller orderController = loader.getController();
 
+
+        orderController.onStart(order);
         Stage window = (Stage) showOrderButton.getScene().getWindow();
         window.setScene(new Scene(root));
         window.show();
+
+
     }
 
     /**
