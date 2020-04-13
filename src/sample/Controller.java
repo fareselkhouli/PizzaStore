@@ -104,3 +104,7 @@ public class Controller implements Initializable{
     Reset(imageBox);
     toppingsList.myListView.SelectedItems.Clear();
     }
+
+    public void ShowOrderButtonClicked(){
+    showOrderButton.setOnAction(e -> primaryStage.setScene(scene2));
+    }
