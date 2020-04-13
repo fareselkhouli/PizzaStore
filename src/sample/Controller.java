@@ -26,6 +26,9 @@ public class Controller implements Initializable{
     ObservableList<String> sizes = FXCollections.observableArrayList("Medium",
             "Small",
             "Large");
+    Image byoImage = new Image("file:buildyourown.jpg");
+    Image hawaiianImage = new Image("file:hawaiian.jpg");
+    Image deluxeImage = new Image("file:deluxe.jpg");
 
     //inject FXML objects
     @FXML
@@ -63,6 +66,7 @@ public class Controller implements Initializable{
         pizzaComboBox.setValue("Build your own");
         sizeComboBox.setValue("Medium");
         toppingsList.setItems(toppings);
+        imageBox.setImage(byoImage);
     }
 
 
@@ -70,9 +74,6 @@ public class Controller implements Initializable{
      * disables boxes
      */
     public void pizzaComBoxselect(){
-        Image byoImage = new Image("file:buildyourown.jpg");
-        Image hawaiianImage = new Image("file:hawaiian.jpg");
-        Image deluxeImage = new Image("file:deluxe.jpg");
 
         String selected = (String) pizzaComboBox.getSelectionModel().getSelectedItem();
         if(selected.equals("Deluxe") ){
@@ -86,9 +87,10 @@ public class Controller implements Initializable{
             return;
         }
         imageBox.setImage(byoImage);
+        toppingsList.setDisable(false);
     }
 
     public void addButtonClicked() throws IllegalArgumentException{
-        if()
+
     }
 }
