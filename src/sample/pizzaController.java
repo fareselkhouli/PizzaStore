@@ -119,7 +119,14 @@ public class pizzaController implements Initializable{
             return;
         }
 
-        selectedToppingBox.getItems().addAll(selectedToppings);
+        String curr = (String) toppingsList.getSelectionModel().getSelectedItem();
+
+        if(selectedToppingBox.getItems().contains(curr)){
+            outputArea.appendText("\nNo duplicate toppings allowed");
+            return;
+        }
+        
+        selectedToppingBox.getItems().add(curr);
 
         if(selectedToppingBox.getItems().size() > 6){
             selectedToppingBox.getItems().clear();
@@ -173,6 +180,10 @@ public class pizzaController implements Initializable{
         if(pType.equals("Build your own")){
             ArrayList<String> toppings= new ArrayList<String>();
             ObservableList<String> selected = selectedToppingBox.getItems();
+            if (selected.size() < 1){
+                outputArea.appendText("Must choose at least one topping");
+                return;
+            }
             for (int i = 0; i<selected.size();++i){
                 toppings.add(selected.get(i));
             }
