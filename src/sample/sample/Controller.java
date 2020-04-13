@@ -2,16 +2,23 @@
  * @FaresElkhouli
  * @ZhiyuFeng
  */
-package sample.scene2;
+package sample;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
+import javafx.stage.Stage;
 import sample.pizza.*;
+import sample.*;
+
+import java.io.IOException;
 import java.util.ArrayList;
 
 public class Controller {
@@ -70,8 +77,15 @@ public class Controller {
         order.clear();
     }
 
-    public void backPressed(){
+    public void backPressed() throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("sample.fxml"));
+        Parent root = loader.load();
+        pizzaController orderController = loader.getController();
 
+        orderController.onReturn(order);
+        Stage window = (Stage) backButton.getScene().getWindow();
+        window.setScene(new Scene(root));
+        window.show();
     }
 
 }

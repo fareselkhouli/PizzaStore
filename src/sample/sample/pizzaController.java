@@ -166,7 +166,7 @@ public class pizzaController implements Initializable{
      * @throws IOException
      */
     public void showOrderButtonPressed(ActionEvent event) throws IOException {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/sample/scene2/Scene2.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("Scene2.fxml"));
         Parent root = loader.load();
         Controller orderController = loader.getController();
 
@@ -175,8 +175,6 @@ public class pizzaController implements Initializable{
         Stage window = (Stage) showOrderButton.getScene().getWindow();
         window.setScene(new Scene(root));
         window.show();
-
-
     }
 
     /**
@@ -198,7 +196,7 @@ public class pizzaController implements Initializable{
             }
             BuildYourOwn curr = new BuildYourOwn(pType,pSize,toppings);
             order.add(curr);
-            outputArea.appendText("\nPizza successfully added!" + curr.toString());
+            outputArea.appendText("\nPizza successfully added! " + curr.toString());
             return;
         }
         if(pType.equals("Deluxe")){
@@ -215,6 +213,10 @@ public class pizzaController implements Initializable{
         }
 
         outputArea.appendText("\nInvalid input");
+    }
+
+    public void onReturn(ArrayList<Pizza> order){
+        this.order = order;
     }
 
 }

@@ -42,6 +42,10 @@ public class BuildYourOwn extends Pizza {
      */
     @Override
     public String toString(){
-        return "This is a " + size+ " build your own pizza that costs: $" + pizzaPrice();
+        String topping = "";
+        for (int i = 0;i < toppings.size(); i++){
+            topping += toppings.get(i) + ", ";
+        }
+        return "This is a " + size+ " build your own pizza with toppings: " + topping +" that costs: $" + pizzaPrice();
     }
 }
