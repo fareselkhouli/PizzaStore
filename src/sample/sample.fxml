@@ -5,15 +5,7 @@
 <?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
 
-<GridPane alignment="center" hgap="10" vgap="10" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller">
-   <columnConstraints>
-      <ColumnConstraints />
-   </columnConstraints>
-   <rowConstraints>
-      <RowConstraints />
-   </rowConstraints>
-   <children>
-      <Pane prefHeight="542.0" prefWidth="572.0" style="-fx-background-color: #f1e7fe;">
+<Pane prefHeight="542.0" prefWidth="572.0" style="-fx-background-color: #f1e7fe;" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.pizzaController">
          <children>
             <VBox layoutX="24.0" layoutY="30.0" prefHeight="112.0" prefWidth="161.0" style="-fx-background-color: #d5b8ff;">
                <children>
@@ -68,7 +60,7 @@
                      <VBox.margin>
                         <Insets bottom="8.0" left="8.0" right="8.0" top="8.0" />
                      </VBox.margin></Button>
-                  <Button fx:id="showOrderButton" mnemonicParsing="false" prefHeight="26.0" prefWidth="87.0" text="Show Order">
+                  <Button fx:id="showOrderButton" mnemonicParsing="false" onAction="#showOrderButtonPressed" prefHeight="26.0" prefWidth="87.0" text="Show Order">
                      <VBox.margin>
                         <Insets bottom="8.0" left="8.0" right="8.0" top="8.0" />
                      </VBox.margin></Button>
@@ -79,5 +71,3 @@
             </VBox>
             <TextArea fx:id="outputArea" layoutX="22.0" layoutY="416.0" prefHeight="112.0" prefWidth="525.0" />
          </children></Pane>
-   </children>
-</GridPane>
