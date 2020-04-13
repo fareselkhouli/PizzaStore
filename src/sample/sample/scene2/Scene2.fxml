@@ -9,7 +9,7 @@
       <TextArea fx:id="orderOutputArea" editable="false" layoutX="14.0" layoutY="207.0" prefHeight="178.0" prefWidth="373.0" />
       <VBox layoutX="416.0" layoutY="15.0" prefHeight="370.0" prefWidth="170.0" style="-fx-background-color: #d5b8ff;">
          <children>
-            <Button fx:id="clearSelectionButton" layoutX="18.0" layoutY="68.0" mnemonicParsing="false" prefHeight="34.0" prefWidth="150.0" text="Clear Selection">
+            <Button fx:id="clearSelectionButton" layoutX="18.0" layoutY="68.0" mnemonicParsing="false" onAction="#clearSelectionPressed" prefHeight="34.0" prefWidth="150.0" text="Clear Selection">
                <padding>
                   <Insets bottom="8.0" left="8.0" right="8.0" top="8.0" />
                </padding>
@@ -17,7 +17,7 @@
                   <Insets bottom="8.0" left="8.0" right="8.0" top="8.0" />
                </VBox.margin>
             </Button>
-            <Button fx:id="clearOrderButton" mnemonicParsing="false" prefHeight="34.0" prefWidth="150.0" text="Clear Order">
+            <Button fx:id="clearOrderButton" mnemonicParsing="false" onAction="#clearOrderPressed" prefHeight="34.0" prefWidth="150.0" text="Clear Order">
                <VBox.margin>
                   <Insets bottom="8.0" left="8.0" right="8.0" top="8.0" />
                </VBox.margin>
@@ -35,8 +35,8 @@
             </Button>
          </children>
       </VBox>
-      <ListView fx:id="orderList" layoutX="14.0" layoutY="21.0" prefHeight="178.0" prefWidth="170.0" />
-      <Label layoutX="201.0" layoutY="166.0" prefHeight="34.0" prefWidth="73.0" text="Order Total:" />
-      <TextField fx:id="totalField" editable="false" layoutX="275.0" layoutY="171.0" prefHeight="26.0" prefWidth="112.0" />
+      <ListView fx:id="orderList" layoutX="14.0" layoutY="21.0" prefHeight="178.0" prefWidth="286.0" />
+      <Label layoutX="314.0" layoutY="136.0" prefHeight="34.0" prefWidth="73.0" text="Order Total:" />
+      <TextField fx:id="totalField" editable="false" layoutX="313.0" layoutY="171.0" prefHeight="26.0" prefWidth="74.0" />
    </children>
 </AnchorPane>
