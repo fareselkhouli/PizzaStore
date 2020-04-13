@@ -18,7 +18,7 @@
             <VBox layoutX="24.0" layoutY="30.0" prefHeight="112.0" prefWidth="161.0" style="-fx-background-color: #d5b8ff;">
                <children>
                   <Label text="Pizza" />
-                  <ComboBox fx:id="pizzaComboBox" prefWidth="150.0" />
+                  <ComboBox fx:id="pizzaComboBox" onAction="#pizzaComBoxselect" prefWidth="150.0" />
                   <Label text="Size" />
                   <ComboBox fx:id="sizeComboBox" prefWidth="150.0" />
                </children>
