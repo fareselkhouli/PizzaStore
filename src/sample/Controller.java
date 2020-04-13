@@ -94,3 +94,13 @@ public class Controller implements Initializable{
 
     }
 }
+    public void RemoveToppingButtonCilcked(){
+        toppingsList.myListView.SelectedItems.Clear();
+    }
+
+    public void ClearSelectedButtonCilcked(){
+    Reset(pizzaComboBox);
+    Reset(sizeComboBox);
+    Reset(imageBox);
+    toppingsList.myListView.SelectedItems.Clear();
+    }
