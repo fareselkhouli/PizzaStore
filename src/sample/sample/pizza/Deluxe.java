@@ -20,9 +20,11 @@ public class Deluxe extends Pizza {
      * @return int price of pizza
      */
     public int pizzaPrice(){
+        int mediumFlat = 2;
+        int largeFlat = 4;
         int smallCost = 14;
-        int mediumCost = smallCost+2;
-        int largeCost = smallCost+4;
+        int mediumCost = smallCost+mediumFlat;
+        int largeCost = smallCost+largeFlat;
 
         if (size.equals("small")){
             return smallCost;

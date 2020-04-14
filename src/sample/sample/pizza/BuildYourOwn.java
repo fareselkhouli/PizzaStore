@@ -17,13 +17,18 @@ public class BuildYourOwn extends Pizza {
      * @return int price of pizza. returns -1 on error case
      */
     public int pizzaPrice(){
+        int minTopping = 1;
         int numberToppings = toppings.size();
-        if (numberToppings < 1) {
+        if (numberToppings < minTopping) {
             return -1;
         }
-        int smallCost = 5 + 2*numberToppings;
-        int mediumCost = smallCost + 2 + 2*numberToppings;
-        int largeCost = smallCost + 4 + 2*numberToppings;
+        int smallFlat = 5;
+        int mediumFlat = 2;
+        int largeFlat = 4;
+        int perToppingPrice = 2;
+        int smallCost = smallFlat + perToppingPrice*numberToppings;
+        int mediumCost = smallCost + mediumFlat + perToppingPrice*numberToppings;
+        int largeCost = smallCost + largeFlat + perToppingPrice*numberToppings;
 
         if (size.equals("small")){
             return smallCost;
